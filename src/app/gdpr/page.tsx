@@ -5,7 +5,7 @@ import Container from "@mui/material/Container";
 
 export const metadata= {title: 'Stranka s GDPR informaciami | ZoskaSnap'}
 
-export default function registracia() {
+export default function GDPR() {
 
   return (
     <Container>

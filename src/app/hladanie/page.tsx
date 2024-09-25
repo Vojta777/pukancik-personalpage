@@ -5,7 +5,7 @@ import Container from "@mui/material/Container";
 
 export const metadata= {title: 'hladanie | ZoskaSnap'}
 
-export default function hladanie() {
+export default function Search() {
 
   return (
     <Container>

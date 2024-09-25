@@ -5,7 +5,7 @@ import Container from "@mui/material/Container";
 
 export const metadata= {title: 'notifikacie | ZoskaSnap'}
 
-export default function notifikacie() {
+export default function Notifications() {
 
   return (
     <Container>

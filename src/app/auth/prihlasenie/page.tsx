@@ -5,7 +5,7 @@ import Container from "@mui/material/Container";
 
 export const metadata= {title: 'prihlaseniecez 0Auth | ZoskaSnap'}
 
-export default function prihlasenie() {
+export default function SingIn() {
 
   return (
     <Container>

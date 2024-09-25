@@ -5,7 +5,7 @@ import Container from "@mui/material/Container";
 
 export const metadata= {title: 'Formular na pridanie prispevku | ZoskaSnap'}
 
-export default function pridat() {
+export default function Add() {
 
   return (
     <Container>
