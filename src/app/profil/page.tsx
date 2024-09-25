@@ -1,15 +1,14 @@
 // src/app/profil/page.tsx
+import React from 'react';
 
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-
-export const metadata= {title: 'Zoznam Profil | ZoskaSnap'}
-
-export default function ProfilList() {
-
+const ProfilePage = () => {
   return (
-    <Container>
-      <Typography> Zoznam profilov</Typography>
-    </Container>
+    <main>
+      <h1>User Profile</h1>
+      <p>This is the user profile page.</p>
+      {/* Add your user profile components here */}
+    </main>
   );
-}
+};
+
+export default ProfilePage;

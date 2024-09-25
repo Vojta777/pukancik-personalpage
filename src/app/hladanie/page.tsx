@@ -1,15 +1,14 @@
 // src/app/hladanie/page.tsx
+import React from 'react';
 
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-
-export const metadata= {title: 'hladanie | ZoskaSnap'}
-
-export default function Search() {
-
+const SearchPage = () => {
   return (
-    <Container>
-      <Typography> hladanie </Typography>
-    </Container>
+    <main>
+      <h1>Search</h1>
+      <p>This is the search page where you can implement search functionality.</p>
+      {/* Add your search components here */}
+    </main>
   );
-}
+};
+
+export default SearchPage;

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-
+import SimpleBottomNavigation from '../components/NavBar'; // Adjust the path if necessary
 
 export const metadata: Metadata = {
   title: "SnapZoska",
@@ -14,8 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="sk">
-      <body >
+      <body>
         {children}
+        <SimpleBottomNavigation /> {/* Include the bottom navigation */}
       </body>
     </html>
   );

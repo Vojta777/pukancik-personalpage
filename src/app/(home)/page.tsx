@@ -1,16 +1,15 @@
-
 // src/app/(home)/page.tsx
 
+import React from 'react';
 
-import Typography from "@mui/material/Typography";
-
-export const metadata= {title: 'Domov | ZoskaSnap'}
-
-export default function Home() {
-
+const HomePage = () => {
   return (
-
-      <Typography> Domova Stranka</Typography>
-
+    <main>
+      <h1>Welcome to SnapZoska</h1>
+      <p>This is your homepage where you can display your app&apos;s main content.</p>
+      {/* Add more content or components as needed */}
+    </main>
   );
-}
+};
+
+export default HomePage;
