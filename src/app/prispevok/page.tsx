@@ -1,15 +1,17 @@
 // src/app/prispevok/page.tsx
 
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
+import React from 'react';
 
-export const metadata= {title: 'Prispevok List | ZoskaSnap'}
+export const metadata = { title: 'Prispevok List | ZoskaSnap' };
 
-export default function PrispevokList() {
-
+const PrispevokList = () => {
   return (
-    <Container>
-      <Typography> Prispevok List</Typography>
-    </Container>
+    <main>
+      <h1>Prispevok List</h1>
+      <p>This is where you will display the list of posts (prispevky).</p>
+      {/* Add your posts list components here */}
+    </main>
   );
-}
+};
+
+export default PrispevokList;

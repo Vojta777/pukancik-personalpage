@@ -15,8 +15,9 @@ export default function RootLayout({
   return (
     <html lang="sk">
       <body>
+      <SimpleBottomNavigation />
         {children}
-        <SimpleBottomNavigation /> {/* Include the bottom navigation */}
+         {/* Include the bottom navigation */}
       </body>
     </html>
   );
