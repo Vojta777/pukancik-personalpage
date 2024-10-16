@@ -1,17 +1,16 @@
-// src/app/(home)/page.tsx
+// src/app/page.tsx
 
-import React from 'react';
+import { getServerSession } from "next-auth";
+import { authOptions } from "../api/auth/[...nextauth]/authOptions";
+import AuthHomeView from "@/sections/AuthHomeView";
+import NonAuthHomeView from "@/sections/NonAuthHomeView";
 
-const HomePage = () => {
-  return (
-    <main>
-      <h1>Welcome to SnapZoska</h1>
-      <p>This is your homepage where you can display your app&apos;s main content.</p>
-      {/* Add more content or components as needed */}
-    </main>
-  );
-};
+export const metadata = { title: "Domov | ZoškaSnap" };
 
-export default HomePage;
+export default async function HomePage() {
+  // Fetch session on the server
+  const session = await getServerSession(authOptions);
 
-
+  // Conditionally render authenticated or non-authenticated home view
+  return session ? <AuthHomeView session={session} /> : <NonAuthHomeView />;
+}

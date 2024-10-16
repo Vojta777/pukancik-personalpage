@@ -1,15 +1,26 @@
-// src/app/auth/odhlasenie/page.tsx
+"use client"; // This makes the component a client component
 
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
+import React from 'react';
+import Button from "@mui/material/Button";
+import { signOut } from "next-auth/react"; // Import the signOut function
 
-export const metadata= {title: 'odhlasenie | ZoskaSnap'}
-
-export default function SingOut() {
+const SignOut = () => {
+  // Function to handle sign-out
+  const handleSignOut = () => {
+    signOut(); // Trigger sign-out
+  };
 
   return (
-    <Container>
-      <Typography> odhlasenie </Typography>
-    </Container>
+    <main style={{ textAlign: 'center', marginTop: '2rem' }}>
+      <Button 
+        variant="contained" 
+        color="primary" 
+        onClick={handleSignOut}
+      >
+        Log Out
+      </Button>
+    </main>
   );
-}
+};
+
+export default SignOut;

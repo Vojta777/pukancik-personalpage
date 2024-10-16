@@ -34,6 +34,9 @@ export default function SimpleBottomNavigation() {
       case 4:
         router.push('/auth/registracia'); // Registracia
         break;
+      case 5:
+        router.push('/auth/odhlasenie'); // odhlasenie
+        break;
       default:
         router.push('/');
     }
@@ -53,6 +56,7 @@ export default function SimpleBottomNavigation() {
         <BottomNavigationAction label="Prispevky" icon={<ArticleIcon />} />
         <BottomNavigationAction label="Prihlasenie" icon={<LoginIcon />} />
         <BottomNavigationAction label="Registracia" icon={<HowToRegIcon />} />
+        <BottomNavigationAction label="Odhlasenie" icon={<HowToRegIcon />} />
       </BottomNavigation>
     </Box>
   );
