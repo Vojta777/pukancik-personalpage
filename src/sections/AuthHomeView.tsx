@@ -1,20 +1,24 @@
 // src/sections/AuthHomeView.tsx
 
-import React from 'react';
-import { Session } from 'next-auth'; // Import the Session type
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+// import Box from "@mui/material/Box";
 
-interface AuthHomeViewProps {
-  session: Session | null; // Define the type for session
-}
+import { Session } from "next-auth";
 
-const AuthHomeView: React.FC<AuthHomeViewProps> = ({ session }) => {
+export default function AuthHomeView({ session }: { session: Session }) {
+
   return (
-    <main>
-      <h1>Welcome back, {session?.user?.name}!</h1>
-      <p>This is your personalized homepage.</p>
-      {/* Add more content or components as needed */}
-    </main>
-  );
-};
+    <Container>
+      <Typography> Domovská stránka - prihlásený user</Typography>
+      <Typography variant="h4" sx={{ mb: 3 }}>
+        Vitajte, {session?.user?.name || "užívateľ"}!
+      </Typography>
 
-export default AuthHomeView;
+
+      {/* <Box sx={{ mt: 2 }}>
+        <pre>{JSON.stringify(session, null, 2)}</pre>
+      </Box> */}
+    </Container>
+  );
+}

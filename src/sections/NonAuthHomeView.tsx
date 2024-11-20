@@ -1,16 +1,16 @@
 // src/sections/NonAuthHomeView.tsx
 
-import React from 'react';
+import { Container, Typography } from "@mui/material";
 
-const NonAuthHomeView = () => {
+export default function NonAuthHomeView() {
   return (
-    <main>
-      <h1>Welcome to SnapZoska</h1>
-      <p>This is your homepage where you can display your app&apos;s main content.</p>
-      <p>Please log in to access personalized features.</p>
-      {/* Add more content or components as needed */}
-    </main>
+    <Container>
+      <Typography variant="body1" sx={{ mt: 2 }}>
+        Domovská stránka - NEprihlásený user
+      </Typography>
+      <Typography>
+        Registrujte sa, aby ste mohli pridať príspevky a zobraziť profil.
+      </Typography>
+    </Container>
   );
-};
-
-export default NonAuthHomeView;
+}
