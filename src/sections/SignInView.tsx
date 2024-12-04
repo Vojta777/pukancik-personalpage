@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Container, Typography } from "@mui/material"; // Only keep the used imports
+import { Button, Container, Typography, ThemeProvider } from "@mui/material"; // Only keep the used imports
 import { signIn } from "next-auth/react";
 import GoogleIcon from "@mui/icons-material/Google";
 import GitHubIcon from "@mui/icons-material/GitHub"; // Import the GitHub icon
@@ -26,45 +26,29 @@ export default function SignInView() {
         Prihlásiť sa
       </Typography>
 
-      {/* Google Sign In */}
-      <Button
-        variant="outlined"
-        fullWidth
-        startIcon={<GoogleIcon />}
-        onClick={() => signIn("google")}
-        sx={{
-          mb: 1,
-          borderColor: googleTheme.palette.primary.main,
-          color: googleTheme.palette.primary.main,
-          "&:hover": {
-            backgroundColor: googleTheme.palette.primary.light,
-            borderColor: googleTheme.palette.primary.main,
-            color: googleTheme.palette.common.white, // Use white from the Google theme for hover
-          },
-        }}
-      >
-        Prihlásiť sa účtom Google
-      </Button>
+      {/* Google Sign In with Google Theme */}
+      <ThemeProvider theme={googleTheme}>
+        <Button
+          variant="outlined"
+          fullWidth
+          startIcon={<GoogleIcon />}
+          onClick={() => signIn("google")}
+        >
+          Prihlásiť sa účtom Google
+        </Button>
+      </ThemeProvider>
 
-      {/* GitHub Sign In */}
-      <Button
-        variant="outlined"
-        fullWidth
-        startIcon={<GitHubIcon />}
-        onClick={() => signIn("github")}
-        sx={{
-          mb: 1,
-          borderColor: githubTheme.palette.primary.main,
-          color: githubTheme.palette.primary.main,
-          "&:hover": {
-            backgroundColor: githubTheme.palette.primary.light,
-            borderColor: githubTheme.palette.primary.main,
-            color: githubTheme.palette.common.white, // Use white from the GitHub theme for hover
-          },
-        }}
-      >
-        Prihlásiť sa účtom GitHub
-      </Button>
+      {/* GitHub Sign In with GitHub Theme */}
+      <ThemeProvider theme={githubTheme}>
+        <Button
+          variant="outlined"
+          fullWidth
+          startIcon={<GitHubIcon />}
+          onClick={() => signIn("github")}
+        >
+          Prihlásiť sa účtom GitHub
+        </Button>
+      </ThemeProvider>
     </Container>
   );
 }

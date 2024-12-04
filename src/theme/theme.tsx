@@ -34,6 +34,7 @@ export const googleTheme: Theme = createTheme({
             color: '#FFFFFF', // White text on hover
             backgroundColor: '#4285F4', // Maintain Google Blue when hovered
           },
+          margin: '8px 0', // Add margin around the buttons
         },
       },
     },
@@ -69,6 +70,7 @@ export const githubTheme: Theme = createTheme({
             color: '#FFFFFF', // White text on hover
             backgroundColor: '#24292E', // Maintain GitHub Dark Gray when hovered
           },
+          margin: '8px 0', // Add margin around the buttons
         },
       },
     },
