@@ -6,8 +6,6 @@ import GoogleIcon from "@mui/icons-material/Google";
 import GitHubIcon from "@mui/icons-material/GitHub"; // Import GitHub icon
 import { googleTheme, githubTheme } from "../theme/theme"; // Adjusted path to the theme file
 
-
-
 export default function SignUpView() {
   const google = googleTheme; // Access the Google theme
   const github = githubTheme; // Access the GitHub theme
@@ -49,6 +47,7 @@ export default function SignUpView() {
           "&:hover": {
             backgroundColor: google.palette.primary.light,
             borderColor: google.palette.primary.main,
+            color: google.palette.common.white, // Set text color to white on hover
           },
         }}
       >
@@ -68,6 +67,7 @@ export default function SignUpView() {
           "&:hover": {
             backgroundColor: github.palette.primary.light,
             borderColor: github.palette.primary.main,
+            color: github.palette.common.white, // Set text color to white on hover
           },
         }}
       >

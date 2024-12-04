@@ -1,3 +1,5 @@
+//src\components\NavBar.tsx
+
 "use client";  // Mark this file as a client component
 import * as React from 'react';
 import { BottomNavigation, BottomNavigationAction, Box, Avatar } from '@mui/material';

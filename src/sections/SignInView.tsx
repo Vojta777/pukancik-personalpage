@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Container, Typography } from "@mui/material";  // Only keep the used imports
+import { Button, Container, Typography } from "@mui/material"; // Only keep the used imports
 import { signIn } from "next-auth/react";
 import GoogleIcon from "@mui/icons-material/Google";
 import GitHubIcon from "@mui/icons-material/GitHub"; // Import the GitHub icon
@@ -23,7 +23,7 @@ export default function SignInView() {
     >
       {/* Logo / Title */}
       <Typography variant="h5" sx={{ mb: 3 }}>
-        Prihlásenie
+        Prihlásiť sa
       </Typography>
 
       {/* Google Sign In */}
@@ -39,6 +39,7 @@ export default function SignInView() {
           "&:hover": {
             backgroundColor: googleTheme.palette.primary.light,
             borderColor: googleTheme.palette.primary.main,
+            color: googleTheme.palette.common.white, // Use white from the Google theme for hover
           },
         }}
       >
@@ -58,6 +59,7 @@ export default function SignInView() {
           "&:hover": {
             backgroundColor: githubTheme.palette.primary.light,
             borderColor: githubTheme.palette.primary.main,
+            color: githubTheme.palette.common.white, // Use white from the GitHub theme for hover
           },
         }}
       >

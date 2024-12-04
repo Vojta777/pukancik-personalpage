@@ -1,3 +1,4 @@
+//src\components\AuthGuard.tsx
 "use client";
 
 import { useSession } from "next-auth/react";
@@ -26,7 +27,7 @@ const AuthGuard = ({ children }: { children: React.ReactNode }) => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        minHeight: "100vh",
+        minHeight: "80vh",
       }}
     >
       <CircularProgress />

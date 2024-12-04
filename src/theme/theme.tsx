@@ -26,6 +26,18 @@ export const googleTheme: Theme = createTheme({
   typography: {
     fontFamily: `'Roboto', 'Arial', sans-serif`,
   },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          '&:hover': {
+            color: '#FFFFFF', // White text on hover
+            backgroundColor: '#4285F4', // Maintain Google Blue when hovered
+          },
+        },
+      },
+    },
+  },
 });
 
 // GitHub-inspired theme
@@ -48,5 +60,17 @@ export const githubTheme: Theme = createTheme({
   },
   typography: {
     fontFamily: `'Segoe UI', 'Helvetica Neue', sans-serif`,
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          '&:hover': {
+            color: '#FFFFFF', // White text on hover
+            backgroundColor: '#24292E', // Maintain GitHub Dark Gray when hovered
+          },
+        },
+      },
+    },
   },
 });
