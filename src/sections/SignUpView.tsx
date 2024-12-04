@@ -1,10 +1,17 @@
 "use client";
 
-import { Button, Container, Typography } from "@mui/material"; // Keep only the used imports
+import { Button, Container, Typography } from "@mui/material";
 import { signIn } from "next-auth/react";
 import GoogleIcon from "@mui/icons-material/Google";
+import GitHubIcon from "@mui/icons-material/GitHub"; // Import GitHub icon
+import { googleTheme, githubTheme } from "../theme/theme"; // Adjusted path to the theme file
+
+
 
 export default function SignUpView() {
+  const google = googleTheme; // Access the Google theme
+  const github = githubTheme; // Access the GitHub theme
+
   return (
     <Container
       maxWidth="xs"
@@ -35,11 +42,37 @@ export default function SignUpView() {
         fullWidth
         startIcon={<GoogleIcon />}
         onClick={() => signIn("google")}
-        sx={{ mb: 1 }}
+        sx={{
+          mb: 1,
+          borderColor: google.palette.primary.main,
+          color: google.palette.primary.main,
+          "&:hover": {
+            backgroundColor: google.palette.primary.light,
+            borderColor: google.palette.primary.main,
+          },
+        }}
       >
         Registrovať sa účtom Google
       </Button>
 
+      {/* GitHub Sign Up */}
+      <Button
+        variant="outlined"
+        fullWidth
+        startIcon={<GitHubIcon />}
+        onClick={() => signIn("github")}
+        sx={{
+          mb: 1,
+          borderColor: github.palette.primary.main,
+          color: github.palette.primary.main,
+          "&:hover": {
+            backgroundColor: github.palette.primary.light,
+            borderColor: github.palette.primary.main,
+          },
+        }}
+      >
+        Registrovať sa účtom GitHub
+      </Button>
     </Container>
   );
 }

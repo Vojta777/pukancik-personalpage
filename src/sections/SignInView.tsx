@@ -3,6 +3,8 @@
 import { Button, Container, Typography } from "@mui/material";  // Only keep the used imports
 import { signIn } from "next-auth/react";
 import GoogleIcon from "@mui/icons-material/Google";
+import GitHubIcon from "@mui/icons-material/GitHub"; // Import the GitHub icon
+import { googleTheme, githubTheme } from "../theme/theme"; // Correct path to your theme file
 
 export default function SignInView() {
   return (
@@ -24,17 +26,43 @@ export default function SignInView() {
         Prihlásenie
       </Typography>
 
-      {/* Google Sign Up */}
+      {/* Google Sign In */}
       <Button
         variant="outlined"
         fullWidth
         startIcon={<GoogleIcon />}
         onClick={() => signIn("google")}
-        sx={{ mb: 1 }}
+        sx={{
+          mb: 1,
+          borderColor: googleTheme.palette.primary.main,
+          color: googleTheme.palette.primary.main,
+          "&:hover": {
+            backgroundColor: googleTheme.palette.primary.light,
+            borderColor: googleTheme.palette.primary.main,
+          },
+        }}
       >
         Prihlásiť sa účtom Google
       </Button>
 
+      {/* GitHub Sign In */}
+      <Button
+        variant="outlined"
+        fullWidth
+        startIcon={<GitHubIcon />}
+        onClick={() => signIn("github")}
+        sx={{
+          mb: 1,
+          borderColor: githubTheme.palette.primary.main,
+          color: githubTheme.palette.primary.main,
+          "&:hover": {
+            backgroundColor: githubTheme.palette.primary.light,
+            borderColor: githubTheme.palette.primary.main,
+          },
+        }}
+      >
+        Prihlásiť sa účtom GitHub
+      </Button>
     </Container>
   );
 }
