@@ -17,17 +17,17 @@ import { googleTheme, githubTheme } from "../styles/theme"; // Adjusted path to 
 export default function SignUpView() {
   return (
     <Container
-      maxWidth="xs"
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center", // Center vertically
-        alignItems: "center", // Center horizontally
-        height: "20%", // Full viewport height
-        bgcolor: "background.paper", // Set background color
-        boxShadow: 3,
-        borderRadius: 2,
-        p: 3,
+    maxWidth="xs"
+    sx={{
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center", // Center vertically
+      alignItems: "center", // Center horizontally
+      bgcolor: "background.paper",
+      boxShadow: 3,
+      borderRadius: 2,
+      p: 3,
+      mt: 35,
       }}
     >
       {/* Logo / Title */}

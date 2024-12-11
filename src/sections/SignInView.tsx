@@ -15,14 +15,11 @@ export default function SignInView() {
       flexDirection: "column",
       justifyContent: "center", // Center vertically
       alignItems: "center", // Center horizontally
-      height: "100vh", // Full viewport height
-      width: "100%", // Full viewport width
       bgcolor: "background.paper",
       boxShadow: 3,
       borderRadius: 2,
       p: 3,
-      marginTop: "auto",  // Centers vertically with margin
-      marginBottom: "auto", // Centers vertically with margin
+      mt: 35,
       }}
     >
       {/* Logo / Title */}

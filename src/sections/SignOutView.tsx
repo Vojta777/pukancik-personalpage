@@ -12,12 +12,13 @@ export default function SignOutView() {
     sx={{
       display: "flex",
       flexDirection: "column",
+      justifyContent: "center", // Center vertically
       alignItems: "center", // Center horizontally
-      height: "20%", // Full viewport height
       bgcolor: "background.paper",
       boxShadow: 3,
       borderRadius: 2,
       p: 3,
+      mt: 35,
       }}
     >
       <Typography variant="h5" sx={{ mb: 3 }}>
