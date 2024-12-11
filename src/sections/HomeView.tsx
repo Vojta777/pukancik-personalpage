@@ -11,5 +11,7 @@ export default function HomeView() {
     <Container>
       <Typography> View pre domovsku stranku </Typography>
     </Container>
+
+    
   );
 }

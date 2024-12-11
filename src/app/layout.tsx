@@ -2,8 +2,10 @@
 
 import { Metadata } from "next";
 import "./globals.css";
-import Navbar from "../components/NavBar";
+
+import ThemeProvider from "@/components/ThemeProvider";
 import AuthProvider from "../components/AuthProvider";
+import Navbar from "../components/NavBar";
 
 export const metadata: Metadata = {
   title: "SnapZoška",
@@ -18,14 +20,13 @@ export default function RootLayout({
   return (
     <html lang="sk">
       <body>
-        {/* Wrap the app in AuthProvider for NextAuth session management */}
         <AuthProvider>
-          <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
-            <main style={{ flexGrow: 1 }}>
-              {children} {/* Render child layouts or pages */}
+          <ThemeProvider>
+            <main >
+              {children}
             </main>
-          </div>
-          <Navbar /> {/* Display Navbar at the bottom of every page */}
+            <Navbar />
+          </ThemeProvider>
         </AuthProvider>
       </body>
     </html>

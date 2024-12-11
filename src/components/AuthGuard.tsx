@@ -13,7 +13,7 @@ const AuthGuard = ({ children }: { children: React.ReactNode }) => {
 
   const redirectToAuthPage = useCallback(() => {
     if (status === "unauthenticated") {
-      router.push("/auth/registracia"); // Redirect to auth/registracia
+      router.push("/api/auth/registracia"); // Redirect to auth/registracia
     }
   }, [status, router]); // Memoize the function with `useCallback` to prevent re-creation
 

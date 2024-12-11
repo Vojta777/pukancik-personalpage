@@ -1,10 +1,17 @@
 "use client";
 
-import { Button, Container, Typography, ThemeProvider } from "@mui/material";
+import {
+  Button,
+  Container,
+  Typography,
+  ThemeProvider,
+  Checkbox,
+  FormControlLabel,
+} from "@mui/material";
 import { signIn } from "next-auth/react";
 import GoogleIcon from "@mui/icons-material/Google";
 import GitHubIcon from "@mui/icons-material/GitHub"; // Import GitHub icon
-import { googleTheme, githubTheme } from "../theme/theme"; // Adjusted path to the theme file
+import { googleTheme, githubTheme } from "../styles/theme"; // Adjusted path to the theme file
 
 export default function SignUpView() {
   return (
@@ -28,8 +35,19 @@ export default function SignUpView() {
 
       {/* Sign-in link */}
       <Typography variant="body1" sx={{ mb: 6 }}>
-        Už máte účet? <a href="/auth/prihlasenie">Prihláste sa</a>
+        Už máte účet? <a href="/api/auth/prihlasenie">Prihláste sa</a>
       </Typography>
+
+      {/* GDPR and Terms Agreement */}
+      <FormControlLabel
+        control={<Checkbox name="gdpr" />}
+        label={
+          <Typography variant="body1">
+            Súhlasím s <a href="/gdpr/">GDPR</a> a <a href="/TermsConditions">Podmienkami používania</a>
+          </Typography>
+        }
+        sx={{ mb: 6 }}
+      />
 
       {/* Google Sign Up with Google theme */}
       <ThemeProvider theme={googleTheme}>

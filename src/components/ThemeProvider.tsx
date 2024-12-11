@@ -1,26 +1,49 @@
-import React, { useState } from 'react';
-import { ThemeProvider } from '@mui/material/styles';
-import { googleTheme, githubTheme } from "../theme/theme"; // Adjusted path to the theme file
+// src/components/ThemeProvider.tsx
 
-const App: React.FC = () => {
-  // You can switch between themes by changing the state
-  const [theme, setTheme] = useState(googleTheme);
+"use client";
 
+import React, { createContext, useContext, useState, useEffect } from "react";
+import { ThemeProvider as MUIThemeProvider, CssBaseline } from "@mui/material";
+import { darkTheme, lightTheme } from "../styles/theme";
+
+// Create a context for the theme
+const ThemeContext = createContext({
+  toggleTheme: () => {},
+  isDarkMode: false,
+});
+
+// Export a custom hook for easy access to theme context
+export const useTheme = () => useContext(ThemeContext);
+
+// ThemeProvider component
+const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  // Load theme preference from localStorage
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") {
+      setIsDarkMode(true);
+    }
+  }, []);
+
+  // Toggle the theme between dark and light
   const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === googleTheme ? githubTheme : googleTheme));
+    const newTheme = !isDarkMode;
+    setIsDarkMode(newTheme);
+    localStorage.setItem("theme", newTheme ? "dark" : "light");
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      <div style={{ padding: 20 }}>
-        <h1>Welcome to the Themed App!</h1>
-        <button onClick={toggleTheme}>
-          Switch to {theme === googleTheme ? 'GitHub' : 'Google'} Theme
-        </button>
-        {/* Add more components here */}
-      </div>
-    </ThemeProvider>
+    <ThemeContext.Provider value={{ toggleTheme, isDarkMode }}>
+      <MUIThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+        <CssBaseline />
+        {children}
+      </MUIThemeProvider>
+    </ThemeContext.Provider>
   );
 };
 
-export default App;
+export default ThemeProvider;

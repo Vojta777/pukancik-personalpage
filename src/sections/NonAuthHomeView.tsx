@@ -11,6 +11,12 @@ export default function NonAuthHomeView() {
       <Typography>
         Registrujte sa, aby ste mohli pridať príspevky a zobraziť profil.
       </Typography>
+      <Typography variant="body1" sx={{ mt: 2 }}>
+        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+          Návšteva našej Facebook stránky
+        </a>
+      </Typography>
+
     </Container>
   );
 }

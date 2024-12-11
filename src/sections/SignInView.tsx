@@ -4,7 +4,7 @@ import { Button, Container, Typography, ThemeProvider } from "@mui/material"; //
 import { signIn } from "next-auth/react";
 import GoogleIcon from "@mui/icons-material/Google";
 import GitHubIcon from "@mui/icons-material/GitHub"; // Import the GitHub icon
-import { googleTheme, githubTheme } from "../theme/theme"; // Correct path to your theme file
+import { googleTheme, githubTheme } from "../styles/theme"; // Correct path to your theme file
 
 export default function SignInView() {
   return (
@@ -24,6 +24,11 @@ export default function SignInView() {
       {/* Logo / Title */}
       <Typography variant="h5" sx={{ mb: 3 }}>
         Prihlásiť sa
+      </Typography>
+
+      {/* Sign-in link */}
+            <Typography variant="body1" sx={{ mb: 6 }}>
+        Nemáte ešte účet? <a href="/api/auth/registracia">Registruj sa</a>
       </Typography>
 
       {/* Google Sign In with Google Theme */}
