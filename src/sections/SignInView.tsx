@@ -9,16 +9,20 @@ import { googleTheme, githubTheme } from "../styles/theme"; // Correct path to y
 export default function SignInView() {
   return (
     <Container
-      maxWidth="xs"
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        mt: 5,
-        p: 3,
-        bgcolor: "background.paper",
-        boxShadow: 3,
-        borderRadius: 2,
+    maxWidth="xs"
+    sx={{
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center", // Center vertically
+      alignItems: "center", // Center horizontally
+      height: "100vh", // Full viewport height
+      width: "100%", // Full viewport width
+      bgcolor: "background.paper",
+      boxShadow: 3,
+      borderRadius: 2,
+      p: 3,
+      marginTop: "auto",  // Centers vertically with margin
+      marginBottom: "auto", // Centers vertically with margin
       }}
     >
       {/* Logo / Title */}

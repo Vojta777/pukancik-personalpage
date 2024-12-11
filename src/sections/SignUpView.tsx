@@ -7,6 +7,7 @@ import {
   ThemeProvider,
   Checkbox,
   FormControlLabel,
+  Box,
 } from "@mui/material";
 import { signIn } from "next-auth/react";
 import GoogleIcon from "@mui/icons-material/Google";
@@ -20,12 +21,13 @@ export default function SignUpView() {
       sx={{
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
-        mt: 5,
-        p: 3,
-        bgcolor: "background.paper",
+        justifyContent: "center", // Center vertically
+        alignItems: "center", // Center horizontally
+        height: "20%", // Full viewport height
+        bgcolor: "background.paper", // Set background color
         boxShadow: 3,
         borderRadius: 2,
+        p: 3,
       }}
     >
       {/* Logo / Title */}

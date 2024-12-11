@@ -12,12 +12,6 @@ export default function AuthHomeView({ session }: { session: Session }) {
         Vitajte, {session?.user?.name || "užívateľ"}!
       </Typography>
 
-      <Typography variant="body1" sx={{ mt: 2 }}>
-        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-          Návšteva našej Facebook stránky
-        </a>
-      </Typography>
-
       {/* <Box sx={{ mt: 2 }}>
         <pre>{JSON.stringify(session, null, 2)}</pre>
       </Box> */}

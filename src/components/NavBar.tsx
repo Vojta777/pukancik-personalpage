@@ -15,6 +15,7 @@ import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
 import LogoutIcon from "@mui/icons-material/Logout";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
+import InfoIcon from "@mui/icons-material/Info";  // Updated icon
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { useTheme } from "../components/ThemeProvider"; // Custom ThemeProvider hook
@@ -36,7 +37,7 @@ export default function Navbar() {
   // Non-authenticated navigation paths
   const nonAuthPaths = [
     { label: "Domov", value: "/", icon: <HomeIcon /> },
-    { label: "Prispevky", value: "/prispevok", icon: <AddCircleIcon /> },
+    { label: "O nas", value: "/o-nas", icon: <InfoIcon /> },   
     { label: "Registrácia", value: "/api/auth/registracia", icon: <AppRegistrationIcon /> },
     { label: "Prihlásenie", value: "/api/auth/prihlasenie", icon: <LoginIcon /> },
   ];
@@ -44,7 +45,7 @@ export default function Navbar() {
   // Authenticated navigation paths
   const authPaths = [
     { label: "Domov", value: "/", icon: <HomeIcon /> },
-    { label: "Pridať", value: "/prispevok", icon: <AddCircleIcon /> },
+    { label: "Prispevky", value: "/prispevok", icon: <AddCircleIcon /> },
     { label: "Odhlásiť", value: "/api/auth/odhlasenie", icon: <LogoutIcon /> },
     {
       label: "Profil",
