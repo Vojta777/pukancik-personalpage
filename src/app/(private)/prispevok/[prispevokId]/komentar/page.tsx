@@ -1,17 +1,10 @@
-// src/app/prispevok/[prispevokId]/komentar/page.tsx
+// src/app/(home)/page.tsx
+import Typography from '@mui/material/Typography';
 
-import React from 'react';
+export const metadata = {title: 'Domov | Zoškasnap'};
 
-export const metadata = { title: 'Prispevok List | ZoskaSnap' };
-
-const CommentList = () => {
+export default function komenty() {
   return (
-    <main>
-      <h1>Komentar List</h1>
-      <p>This is where you will display the list of comments.</p>
-      {/* Add your comment list components here */}
-    </main>
+    <Typography>Komenty</Typography>
   );
-};
-
-export default CommentList;
+}

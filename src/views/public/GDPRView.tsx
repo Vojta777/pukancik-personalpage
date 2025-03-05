@@ -1,28 +1,25 @@
-// src/views/GDPRView.tsx
-"use client";
+// src/views/public/GDPRView.tsx
 
-import React from "react";
-import { Box, Typography } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+"use client"; // This marks the component as a client-side component
+
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import BackButton from "@/components/BackButton"; // Ensure correct import path
+import { gdprContent } from "@/content/gdprContent";
 
 const GDPRView = () => {
-  const theme = useTheme();
-
   return (
-    <Box
-      sx={{
-        padding: theme.spacing(3),
-        backgroundColor: theme.palette.background.default,
-        color: theme.palette.text.primary,
-      }}
-    >
+    <Container maxWidth="md" sx={{ mt: 5, p: 3 }}>
       <Typography variant="h4" gutterBottom>
-        GDPR Compliance
+        {gdprContent.title} {/* Display the title */}
       </Typography>
-      <Typography variant="body1">
-        We are committed to protecting your data in compliance with GDPR regulations.
-      </Typography>
-    </Box>
+      {gdprContent.paragraphs.map((paragraph, index) => (
+        <Typography key={index} variant="body1">
+          {paragraph} {/* Display each paragraph */}
+        </Typography>
+      ))}
+      <BackButton />
+    </Container>
   );
 };
 

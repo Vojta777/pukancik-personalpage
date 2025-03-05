@@ -1,29 +1,45 @@
-// src/views/TermsConditionsView.tsx
 "use client";
 
-import React from "react";
-import { Box, Typography } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import BackButton from "@/components/BackButton"; // Assuming BackButton is reusable
+import termsContent from "@/content/termsContent";
 
-const TermsConditionsView = () => {
-  const theme = useTheme();
+// Content import (optional, for separating terms)
 
+const TermsView = () => {
   return (
-    <Box
-      sx={{
-        padding: theme.spacing(3),
-        backgroundColor: theme.palette.background.default,
-        color: theme.palette.text.primary,
-      }}
-    >
+    <Container maxWidth="md" sx={{ mt: 5, p: 3 }}>
+      {/* Title */}
       <Typography variant="h4" gutterBottom>
-        Terms and Conditions
+        {termsContent.title}
       </Typography>
-      <Typography variant="body1">
-        By using SnapZoška, you agree to our terms and conditions.
+
+      {/* Introduction */}
+      <Typography variant="body1" gutterBottom>
+        {termsContent.introduction}
       </Typography>
-    </Box>
+
+      {/* Terms List */}
+      <div>
+        {termsContent.terms.map((term, index) => (
+          <div key={index}>
+            <Typography variant="body1" gutterBottom>
+              {term}
+            </Typography>
+          </div>
+        ))}
+      </div>
+
+      {/* Contact */}
+      <Typography variant="body1" gutterBottom>
+        {termsContent.contact}
+      </Typography>
+
+      {/* BackButton component to navigate back */}
+      <BackButton />
+    </Container>
   );
 };
 
-export default TermsConditionsView;
+export default TermsView;

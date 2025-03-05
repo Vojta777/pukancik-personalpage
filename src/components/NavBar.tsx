@@ -1,72 +1,69 @@
-"use client"; // Mark this file as a client component
+"use client";
 
-import * as React from "react";
-import {
-  BottomNavigation,
-  BottomNavigationAction,
-  Box,
-  Avatar,
-  IconButton,
-} from "@mui/material";
-import HomeIcon from "@mui/icons-material/Home";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
-import LoginIcon from "@mui/icons-material/Login";
-import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
-import LogoutIcon from "@mui/icons-material/Logout";
-import DarkModeIcon from "@mui/icons-material/DarkMode";
-import LightModeIcon from "@mui/icons-material/LightMode";
-import InfoIcon from "@mui/icons-material/Info";  // Updated icon
-import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
-import { useTheme } from "../components/ThemeProvider"; // Custom ThemeProvider hook
+import * as React from 'react';
+import { BottomNavigation, BottomNavigationAction, Box, IconButton } from '@mui/material';
+import HomeIcon from '@mui/icons-material/Home';
+import SearchIcon from '@mui/icons-material/Search';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import LoginIcon from '@mui/icons-material/Login';
+import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
+import LogoutIcon from '@mui/icons-material/Logout';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'; // Default profile icon
+import LightModeIcon from '@mui/icons-material/LightMode';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import { useRouter } from 'next/navigation';
+import { useSession, signOut } from "next-auth/react";
+import { useTheme } from "../app/providers/ThemeProvider"; // Import the custom useTheme hook
 
 export default function Navbar() {
-  const [value, setValue] = React.useState("/");
+  const [value, setValue] = React.useState('/');
   const router = useRouter();
-  const { data: session } = useSession(); // Get session data
-  const { toggleTheme, isDarkMode } = useTheme(); // Use theme context
+  const { status } = useSession();
+  const { toggleTheme, isDarkMode } = useTheme(); // Access theme context
 
-  const handleNavigation = (
-    event: React.SyntheticEvent,
-    newValue: string
-  ) => {
+  const handleNavigation = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
-    router.push(newValue);
+    if (newValue === '/auth/odhlasenie') {
+      signOut({
+        callbackUrl: '/',
+      });
+    } else {
+      router.push(newValue);
+    }
   };
 
   // Non-authenticated navigation paths
   const nonAuthPaths = [
     { label: "Domov", value: "/", icon: <HomeIcon /> },
-    { label: "O nas", value: "/o-nas", icon: <InfoIcon /> },   
-    { label: "Registrácia", value: "/api/auth/registracia", icon: <AppRegistrationIcon /> },
-    { label: "Prihlásenie", value: "/api/auth/prihlasenie", icon: <LoginIcon /> },
+    { label: "O nás", value: "/o-nas", icon: <AddCircleIcon /> },
+    { label: "Registrácia", value: "/auth/registracia", icon: <AppRegistrationIcon /> },
+    { label: "Prihlásenie", value: "/auth/prihlasenie", icon: <LoginIcon /> },
   ];
 
   // Authenticated navigation paths
   const authPaths = [
     { label: "Domov", value: "/", icon: <HomeIcon /> },
-    { label: "Prispevky", value: "/prispevok", icon: <AddCircleIcon /> },
-    { label: "Odhlásiť", value: "/api/auth/odhlasenie", icon: <LogoutIcon /> },
+    { label: "Hľadať", value: "/hladat", icon: <SearchIcon /> },
+    { label: "Pridať", value: "/pridat", icon: <AddCircleIcon /> },
     {
       label: "Profil",
       value: "/profil",
-      icon: session?.user?.image ? (
-        <Avatar
-          alt={session?.user?.name || "User"}
-          src={session?.user?.image || undefined}
-        />
-      ) : (
-        <Avatar>{session?.user?.name?.charAt(0) || "U"}</Avatar>
-      ),
+      icon: <AccountCircleIcon /> // Default profile icon
     },
+    { label: "Odhlásiť", value: "/auth/odhlasenie", icon: <LogoutIcon /> },
   ];
 
   // Decide which paths to use based on authentication status
-  const navigationPaths = session ? authPaths : nonAuthPaths;
+  const navigationPaths = status === "authenticated" ? authPaths : nonAuthPaths;
 
   return (
-    <Box sx={{ width: "100%", position: "fixed", bottom: 0 }}>
-      <BottomNavigation showLabels value={value} onChange={handleNavigation}>
+    <Box sx={{ width: '100%', position: 'fixed', bottom: 0, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <BottomNavigation
+        showLabels
+        value={value}
+        onChange={handleNavigation}
+        sx={{ flexGrow: 1 }}
+      >
         {navigationPaths.map((path) => (
           <BottomNavigationAction
             key={path.value}
@@ -75,13 +72,15 @@ export default function Navbar() {
             icon={path.icon}
           />
         ))}
-        {/* Theme toggle button (Dark/Light mode) */}
-        <Box sx={{ position: "absolute", right: 16 }}>
-          <IconButton onClick={toggleTheme} color="inherit">
-            {isDarkMode ? <LightModeIcon /> : <DarkModeIcon />} {/* Toggle icons */}
-          </IconButton>
-        </Box>
       </BottomNavigation>
+
+      {/* Theme toggle button */}
+      <IconButton
+        onClick={toggleTheme}
+        sx={{ position: 'absolute', top: 10, right: 10 }}
+      >
+        {isDarkMode ? <LightModeIcon /> : <DarkModeIcon />}
+      </IconButton>
     </Box>
   );
 }

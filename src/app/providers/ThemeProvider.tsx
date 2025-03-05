@@ -1,21 +1,23 @@
-"use client";
+"use client"; // This needs to be a client component
 
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { ThemeProvider as MUIThemeProvider, CssBaseline } from "@mui/material";
-import { darkTheme, lightTheme } from "../styles/theme";
+import { darkTheme, lightTheme } from "@/theme/theme";
 
-// Create a context to manage theme state
+
+
+// Create a context for the theme
 const ThemeContext = createContext({
   toggleTheme: () => {},
   isDarkMode: false,
 });
 
-// Custom hook to use theme context
+// Export a custom hook for easy access to theme context
 export const useTheme = () => useContext(ThemeContext);
 
-// Main ThemeProvider component
+// ThemeProvider component
 const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   // Load theme preference from localStorage
   useEffect(() => {
@@ -25,14 +27,13 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
     }
   }, []);
 
-  // Toggle theme between dark and light
+  // Toggle the theme between dark and light
   const toggleTheme = () => {
     const newTheme = !isDarkMode;
     setIsDarkMode(newTheme);
     localStorage.setItem("theme", newTheme ? "dark" : "light");
   };
 
-  // Provide theme context and wrap children with MUI ThemeProvider
   return (
     <ThemeContext.Provider value={{ toggleTheme, isDarkMode }}>
       <MUIThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>

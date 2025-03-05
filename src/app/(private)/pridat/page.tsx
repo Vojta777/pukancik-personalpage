@@ -1,15 +1,10 @@
 // src/app/pridat/page.tsx
+import Typography from '@mui/material/Typography';
 
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-
-export const metadata= {title: 'Formular na pridanie prispevku | ZoskaSnap'}
+export const metadata = {title: 'Pridat | Zoškasnap'};
 
 export default function Add() {
-
   return (
-    <Container>
-      <Typography> Formular na pridanie prispevku </Typography>
-    </Container>
+    <Typography>Domovská stránka</Typography>
   );
 }

@@ -1,17 +1,8 @@
-// src/app/prispevok/page.tsx
+// In this file, you can export the metadata
+export const metadata = { title: "Príspevky | ZoškaSnap" };
 
-import React from 'react';
+import PostsView from "@/views/private/PostsView";
 
-export const metadata = { title: 'Prispevok List | ZoskaSnap' };
+const PostsPage = () => <PostsView />;
 
-const PrispevokList = () => {
-  return (
-    <main>
-      <h1>Prispevok List</h1>
-      <p>This is where you will display the list of posts (prispevky).</p>
-      {/* Add your posts list components here */}
-    </main>
-  );
-};
-
-export default PrispevokList;
+export default PostsPage;

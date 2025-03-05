@@ -1,28 +1,34 @@
-// src/views/AboutView.tsx
-"use client";
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import Link from '@mui/material/Link';
+import aboutContent from '@/content/aboutContent';
 
-import React from "react";
-import { Box, Typography } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+// Import the content (make sure this import is pointing to your actual content file)
 
 const AboutView = () => {
-  const theme = useTheme();
-
   return (
-    <Box
-      sx={{
-        padding: theme.spacing(3),
-        backgroundColor: theme.palette.background.default,
-        color: theme.palette.text.primary,
-      }}
-    >
+    <Container>
+      {/* Title */}
       <Typography variant="h4" gutterBottom>
-        About SnapZoška
+        {aboutContent.title}
       </Typography>
+
+      {/* Introduction */}
       <Typography variant="body1">
-        SnapZoška is a platform created by students to connect people and share ideas.
+        {aboutContent.introduction}
       </Typography>
-    </Box>
+
+      {/* Social Links */}
+      <div>
+        {aboutContent.socialLinks.map((link, index) => (
+          <div key={index}>
+            <Link href={link.url} target="_blank" rel="noopener noreferrer">
+              {link.name}
+            </Link>
+          </div>
+        ))}
+      </div>
+    </Container>
   );
 };
 

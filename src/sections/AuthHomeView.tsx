@@ -1,20 +1,20 @@
-import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
-// import Box from "@mui/material/Box";
+"use client"; // Ensures client-side rendering for interactivity
 
 import { Session } from "next-auth";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 
-export default function AuthHomeView({ session }: { session: Session }) {
+interface Props {
+  session: Session;
+}
+
+export default function AuthHomeView({ session }: Props) {
   return (
-    <Container>
-      <Typography> Domovská stránka - prihlásený user</Typography>
-      <Typography variant="h4" sx={{ mb: 3 }}>
-        Vitajte, {session?.user?.name || "užívateľ"}!
+    <Box sx={{ p: 3, textAlign: "center" }}>
+      <Typography variant="h4">Welcome back, {session.user?.name}!</Typography>
+      <Typography variant="body1">
+        This is the home page for registered users.
       </Typography>
-
-      {/* <Box sx={{ mt: 2 }}>
-        <pre>{JSON.stringify(session, null, 2)}</pre>
-      </Box> */}
-    </Container>
+    </Box>
   );
 }
